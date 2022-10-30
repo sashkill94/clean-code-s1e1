@@ -18,7 +18,7 @@ var completedTasksHolder=document.getElementById("completed-tasks");//completed-
 var createNewTaskElement=function(taskString){
 
     var listItem=document.createElement("li");
-    listItem.classList.add('list-item');
+    listItem.classList.add('task-list__item');
 
     //input (checkbox)
     var checkBox=document.createElement("input");//checkbx
@@ -34,18 +34,20 @@ var createNewTaskElement=function(taskString){
     var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='main-wrapper__label task';
+    label.className='task-list__label task';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="main-wrapper__input task";
+    editInput.className="task-list__input task task-list__input_type_text";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
     editButton.className="button edit-button";
 
     deleteButton.className="button delete-button";
     deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.alt = '';
+    deleteButtonImg.classList.add('delete-button__image')
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -86,7 +88,7 @@ var editTask=function(){
     var editInput=listItem.querySelector('input[type=text]');
     var label=listItem.querySelector("label");
     var editBtn=listItem.querySelector(".edit-button");
-    var containsClass=listItem.classList.contains("edit-mode");
+    var containsClass=listItem.classList.contains("task-list__item_edit-mode");
     //If class of the parent is .editmode
     if(containsClass){
 
@@ -100,7 +102,7 @@ var editTask=function(){
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("edit-mode");
+    listItem.classList.toggle("task-list__item_edit-mode");
 };
 
 
