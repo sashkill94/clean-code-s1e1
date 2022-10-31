@@ -38,6 +38,7 @@ var createNewTaskElement=function(taskString){
 
     //Each elements, needs appending
     checkBox.type="checkbox";
+    checkBox.className="task-list__input task-list__input_type_checkbox";
     editInput.type="text";
     editInput.className="task-list__input task task-list__input_type_text";
 
@@ -102,6 +103,7 @@ var editTask=function(){
     }
 
     //toggle .editmode on the parent.
+    label.classList.toggle('task-list__label_mode_edit')
     listItem.classList.toggle("task-list__item_edit-mode");
 };
 
@@ -124,6 +126,9 @@ var taskCompleted=function(){
 
     //Append the task list item to the #completed-tasks
     var listItem=this.parentNode;
+    // listItem.className = 'task-list__label task-list__label_mode_complete task';
+    const label = listItem.querySelector('.task-list__label');
+    label.classList.add('task-list__label_mode_complete');
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskIncomplete);
 
@@ -136,6 +141,8 @@ var taskIncomplete=function(){
     //When the checkbox is unchecked
     //Append the task list item to the #incompleteTasks.
     var listItem=this.parentNode;
+    const label = listItem.querySelector('.task-list__label');
+    label.classList.remove('task-list__label_mode_complete');
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem,taskCompleted);
 }

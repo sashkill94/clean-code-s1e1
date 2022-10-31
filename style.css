@@ -164,7 +164,7 @@
   display: none;
 }
 
-.task-list__input_type_text {
+.task-list__item_edit-mode .task-list__input_type_text {
   display: inline-block;
   width: 224px;
 }
